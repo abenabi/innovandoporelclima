@@ -1,6 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\MapController;
+use App\Http\Controllers\EstacionController;
+use App\Http\Controllers\InstrumentoController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +17,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
+/* Route::get('/', function () {
     return view('welcome');
-});
+}); */
+
+Route::get('/', [MapController::class, 'index']);
+Route::get('/estacion/{id}', [EstacionController::class, 'consultar_estacion']);
+Route::get('/instrumento/{id}', [InstrumentoController::class, 'consultar_instrumento']);
+
