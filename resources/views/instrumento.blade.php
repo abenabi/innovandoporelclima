@@ -11,6 +11,16 @@
     <title>Instrumento </title>
 @endsection
 @section('content')
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+          <main>
+            <div id="reader"></div>
+            <div id="result"></div>
+          </main>
+      </div>
+    </div> 
+  </div>
     <div class="row" style="width: 100%;margin:0px;padding:0px;height: 100%;">
         <div class="col-5 menu">
             <h5>Instrumento {{ $instrumento->instrumento->nombre }}</h5>

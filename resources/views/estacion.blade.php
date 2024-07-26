@@ -33,9 +33,6 @@
             <b>Certificaciones y estándares: </b>{{$estacion->certificaciones}} <br>
             <b>Accesibilidad y horarios: </b>{{$estacion->accesibilidad_y_horarios}} <br>
           </div>
-          {{-- <div class="col">
-            Hola
-          </div> --}}
           <div class="col imagenes">
             <div class="thumbnail-container" id="thumbnailContainer" style="margin-top:12px;text-align: center;">
               <img id="thumbnailImage" src="https://img.freepik.com/foto-gratis/colores-vibrantes-que-arremolinan-caos-submarino-futurista-generado-ia_188544-9692.jpg?w=1060&t=st=1721846477~exp=1721847077~hmac=51e02754ebd0d6ed13cbf64a449ce310e0f8be74f87af68e5f1847d5c83d27d4" class="thumbnail" alt="Thumbnail">
@@ -72,6 +69,16 @@
             </div>
           </div>
         </div>   
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+                <main>
+                  <div id="reader"></div>
+                  <div id="result"></div>
+                </main>
+            </div>
+          </div> 
+        </div>
       </div>
       <div class="col-4 right">
         <div class="aside" style="border-radius: 5px;padding:10px">
@@ -90,33 +97,6 @@
                 </a>
               </div>
             @endforeach
-            {{-- <div class="col">
-              <div class="card">
-                <img src="..." class="card-img-top" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title">Card title</h5>
-                  <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                </div>
-              </div>
-            </div>
-            <div class="col">
-              <div class="card">
-                <img src="..." class="card-img-top" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title">Card title</h5>
-                  <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content.</p>
-                </div>
-              </div>
-            </div>
-            <div class="col">
-              <div class="card">
-                <img src="..." class="card-img-top" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title">Card title</h5>
-                  <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                </div>
-              </div>
-            </div> --}}
           </div>
         </div>
       </div>
@@ -145,11 +125,6 @@
       border-radius: 8px;
       display: flex;justify-content: center;align-items: center;
     }
-
-    /* .carousel-inner{
-        display: flex; align-items: center; justify-content: center
-    } */
-
     .custom-carousel .carousel-inner img {
       width: 100%;
       height: 100%;

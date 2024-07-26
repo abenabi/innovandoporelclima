@@ -135,7 +135,17 @@ summary.accordion-button::-webkit-details-marker {
   display: none;
 }
 </style>
-
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+        <main style="border-radius: 10px;
+            border-color:#ffffff;">
+          <div id="reader"></div>
+          <div id="result"></div>
+        </main>
+    </div>
+  </div> 
+</div>
     <div class="row" style="width: 100%;margin:0px;padding:0px;height: 100%;">
         <div class="col-3 menu">
             <div class="estaciones" style="border-radius: 5px;padding:10px">
