@@ -11,31 +11,51 @@
     <title>Estación </title>
 @endsection
 @section('content')
+
+
     <div class="row" style="width: 100%;margin:0px;padding:0px;height: 100%;">
       <div class="col-8 menu">
-        <h5>Estación meteorológica convencional {{$estacion->nombre}}</h5>
-        {{-- <br> --}}
-        <button type="button" class="btn btn-primary" onclick="history.back()">
+        <h5>Estación meteorológica convencional {{$estacion->nombre}}</h5> 
+        <div class="d-flex flex-column flex-md-row justify-content-between align-items-left">
+        <button type="button" class="btn btn-primary" onclick="history.back()" style="max-width: 86.6px; max-height: 37.6px; min-width: 86.6px; min-height: 37.6px; padding: 0; display: flex; align-items: center; justify-content: center;">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left-circle-fill" viewBox="0 0 16 16">
                 <path d="M8 0a8 8 0 1 0 0 16A8 8 0 0 0 8 0m3.5 7.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5z"/>
             </svg> 
             &nbsp;Atrás
         </button>
+        @if($estacion->estado->id == 1)
+          <script>
+              document.addEventListener('DOMContentLoaded', function () {
+                  Swal.fire({
+                      title: 'Estación en Mantenimiento',
+                      text: 'La estación está actualmente en mantenimiento.',
+                      icon: 'warning',
+                      confirmButtonText: 'Aceptar'
+                  });
+              });
+          </script>
+          <br>
+          <div class="d-flex align-items-center" style="background: #ffffff;padding-left:10px;padding-right:10px;border-radius:5px;margin-right:10px;">
+<img src="{{ asset('/' . $estacion->estado->icono_file_path) }}" class="card-img-top " alt="..." style="max-height: 37.6px; max-width:37.6px;"><span><b>Estación en mantenimiento</b></span></div>
+@endif
+        </div>
         <div class="row generalidades" style="display: flex;">
           <div class="col datos-generales">
             <h6 style="text-align: center;"><b>Generalidades de la estación</b></h6>
-            {{-- <b>Estado: </b>{{$estacion->estado->nombre}}<br> --}}
+            {{-- <b>Estado: </b>{{$estacion->estado->nombre}}<br>
+            <b>Estado: </b>{{$estacion->estado->id}}<br> --}}
             <b>Ubicación: </b>{{$estacion->latitude}}, {{$estacion->longitude}} <br>
             <b>Departamento: </b>{{$estacion->departamento->nombre}} <br>
             <b>Dirección: </b>{{$estacion->direccion}} <br>
             <b>Fecha de fundación: </b>{{$estacion->fecha_de_fundacion}} <br>
             <b>Responsable: </b>{{$estacion->responsable}} <br>
-            <b>Certificaciones y estándares: </b>{{$estacion->certificaciones}} <br>
-            <b>Accesibilidad y horarios: </b>{{$estacion->accesibilidad_y_horarios}} <br>
+            <b>Certificaciones y estándares: </b>{{$estacion->certificaciones}}<br>
+            <b>Accesibilidad y horarios: </b>{{$estacion->accesibilidad_y_horarios}}<br>
           </div>
           <div class="col imagenes">
             <div class="thumbnail-container" id="thumbnailContainer" style="margin-top:12px;text-align: center;">
-              <img id="thumbnailImage" src="https://img.freepik.com/foto-gratis/colores-vibrantes-que-arremolinan-caos-submarino-futurista-generado-ia_188544-9692.jpg?w=1060&t=st=1721846477~exp=1721847077~hmac=51e02754ebd0d6ed13cbf64a449ce310e0f8be74f87af68e5f1847d5c83d27d4" class="thumbnail" alt="Thumbnail">
+              <img id="thumbnailImage" src="{{ asset('/' . $primeraImagen->file_path) }}" class="thumbnail" alt="Thumbnail">
+
               <span id="thumbnailLabel" class="thumbnail-label">Ver imágenes</span>
             </div>        
             <div id="carouselOverlay" class="overlay">
@@ -47,15 +67,14 @@
                   <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
                 </div>
                 <div class="carousel-inner">
-                  <div class="carousel-item active">
-                    <img src="https://img.freepik.com/foto-gratis/colores-vibrantes-que-arremolinan-caos-submarino-futurista-generado-ia_188544-9692.jpg?w=1060&t=st=1721846477~exp=1721847077~hmac=51e02754ebd0d6ed13cbf64a449ce310e0f8be74f87af68e5f1847d5c83d27d4" class="d-block w-100 img-limited-height">
+                  @foreach($estacion->imagen_estacion as $index => $imagen)
+                  <div class="carousel-item {{ $index == 0 ? 'active' : '' }}">
+                      <img src="{{ asset('/' . $imagen->file_path) }}" class="d-block w-100 img-limited-height" alt="{{ $imagen->descripcion }}">
+                      <div class="carousel-caption d-none d-md-block" style="background: #45454589;padding:0px;border-radious:5px;">
+                        <p>{{$imagen->descripcion}}</p>
+                      </div>
                   </div>
-                  <div class="carousel-item">
-                    <img src="https://img.freepik.com/foto-gratis/pajaro-buho-flores-colores-generativo-ai_206725-745.jpg?w=360&t=st=1721846839~exp=1721847439~hmac=8119427179d820d5e93e8e9b4f48d7479f19eab8b83fa2202fb1a7f28a3205be" class="d-block w-100 img-limited-height" alt="...">
-                  </div>
-                  <div class="carousel-item">
-                    <img src="https://img.freepik.com/foto-gratis/diseno-colorido-diseno-espiral_188544-9588.jpg?w=1060&t=st=1721846859~exp=1721847459~hmac=4db7037477f1e19e335bb87026e2d2bd21dd067a0233b4a490513794ae13b985" class="d-block w-100 img-limited-height" alt="...">
-                  </div>
+                  @endforeach
                 </div>
                 <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
                   <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -68,7 +87,40 @@
               </div>
             </div>
           </div>
-        </div>   
+        </div>
+        
+        <div class="row generalidades" style="display: flex; height: 500px;">
+          <div class="dropdown">
+              <a class="btn btn-light dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Selecciona una variable
+              </a>
+          
+              <ul class="dropdown-menu">
+                  @foreach ($variables as $variable)
+                      <li>
+                          <a class="dropdown-item" href="#" data-icon="{{ asset($variable['icono_file_path']) }}" data-nombre="{{ $variable['nombre'] }}">
+                              <img src="{{ asset($variable['icono_file_path']) }}" alt="{{ $variable['nombre'] }}" style="max-height: 20px; max-width: 20px; margin-right: 10px;">
+                              {{ $variable['nombre'] }}
+                          </a>
+                      </li>
+                  @endforeach
+              </ul>
+          </div>
+      
+          <div id="variable-info" class="ms-3" style="display: flex; align-items: center;">
+              <img id="variable-icon" src="" alt="" style="max-height: 50px; max-width: 50px; margin-right: 10px;">
+              <span id="variable-name"></span>
+
+              <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+              {{-- <canvas id="myChart" width="400" height="200"></canvas> --}}
+              {{-- <div class="container mt-5">
+                <div id="chart-container" style="position: relative;">
+                    <canvas id="myChart" width="600" height="400"></canvas>
+                    <div id="tooltip" class="tooltip-img" style="display: none;"></div>
+                </div>
+            </div> --}}
+          </div>
+      </div>
         <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
           <div class="modal-dialog">
             <div class="modal-content">
@@ -88,7 +140,8 @@
               <div class="col">
                   <a href="{{url('instrumento/'.$instrumento->estacion_instrumento->id)}}" class="text-decoration-none text-dark">
                   <div class="card">
-                    <img src="..." class="card-img-top" alt="...">
+                    <img src="{{ asset('/' . $instrumento->icono_file_path) }}" class="card-img-top img-centered" alt="..." style="max-width: 150px; max-height: 150px;margin-top:10px;">
+
                     <div class="card-body">
                       <h5 class="card-title">{{$instrumento->nombre}}</h5>
                       <p class="card-text">{{$instrumento->descripcion}}</p>
@@ -103,6 +156,12 @@
     </div>
 
   <style>
+
+.img-centered {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
 .overlay {
       position: fixed;
       top: 0;
@@ -142,6 +201,25 @@
       cursor: pointer;
       z-index: 1060;
     }
+
+    #myChart {
+            position: relative;
+        }
+        .tooltip-img {
+            position: absolute;
+            pointer-events: none;
+            background: rgba(0, 0, 0, 0.75);
+            color: #fff;
+            padding: 10px;
+            border-radius: 3px;
+            font-size: 12px;
+            white-space: normal; /* Permite el ajuste del texto */
+            max-width: 300px; /* Ancho máximo del tooltip */
+            overflow: hidden; /* Oculta el contenido que se desborda */
+            word-wrap: break-word; /* Permite que las palabras largas se ajusten */
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Añade una sombra para mejorar la visibilidad */
+        }
+
 
     .thumbnail-container {
       position: relative;
@@ -280,5 +358,109 @@ html {
     function hideCarousel() {
       document.getElementById('carouselOverlay').style.display = 'none';
     }
+
+    document.addEventListener('DOMContentLoaded', function () {
+        const dropdownItems = document.querySelectorAll('.dropdown-item');
+        const variableIcon = document.getElementById('variable-icon');
+        const variableName = document.getElementById('variable-name');
+
+        dropdownItems.forEach(item => {
+            item.addEventListener('click', function (event) {
+                event.preventDefault(); // Prevent the default action
+                const iconSrc = this.getAttribute('data-icon');
+                const name = this.getAttribute('data-nombre');
+
+                variableIcon.src = iconSrc;
+                variableName.textContent = name;
+            });
+        });
+    });
   </script>
+
+<script>
+        var ctx = document.getElementById('myChart').getContext('2d');
+        var tooltipEl = document.getElementById('tooltip');
+
+        // Define las imágenes para diferentes rangos de temperatura
+        var imageUrls = {
+            low: '/Iconos/temperatura_minima.gif', // Baja temperatura
+            moderate: '/Iconos/temperatura_media.gif', // Temperatura moderada
+            high: '/Iconos/temperatura_maxima.gif' // Alta temperatura
+        };
+
+        var recomendacion = {
+            low: 'Asegúrate de vestirte en capas y mantenerte abrigado. Es recomendable consumir bebidas calientes y evitar exposiciones prolongadas al aire libre para prevenir resfriados.',
+            moderate: 'Trata de mantenerte hidratado bebiendo suficiente agua. Usa ropa ligera y protectora del sol si estás al aire libre, y considera tomar descansos en áreas frescas.',
+            high: 'Es crucial mantenerse bien hidratado. Evita las actividades físicas intensas durante las horas más cálidas del día. Usa ropa ligera, sombrero y protector solar. Busca refugio en lugares frescos y con aire acondicionado.'
+        };
+        
+
+        var myChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: ['21/6/2021', '22/6/2021', '23/6/2021', '24/6/2021', '25/6/2021', '26/6/2021', '27/6/2021'],
+                datasets: [{
+                    label: 'Temperatura máxima (°C)',
+                    data: [33, 30.5, 28.8, 32.4, 32, 31.2, 29.6],
+                    borderColor: 'rgba(75, 192, 192, 1)',
+                    backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                plugins: {
+                    tooltip: {
+                        enabled: false, // Desactivar el tooltip predeterminado
+                        external: function(context) {
+                            // Obtén las coordenadas del tooltip
+                            var tooltipModel = context.tooltip;
+                            if (tooltipModel.opacity === 0) {
+                                tooltipEl.style.display = 'none';
+                                return;
+                            }
+
+                            // Definir la imagen en función del valor de la temperatura
+                            var temp = tooltipModel.dataPoints[0].raw;
+                            var imageUrl;
+                            var recommendation;
+                            if (temp < 30) {
+                                imageUrl = imageUrls.low;
+                                recommendation = recomendacion.low;
+                            } else if (temp < 32) {
+                                imageUrl = imageUrls.moderate;
+                                recommendation = recomendacion.moderate;
+                            } else {
+                                imageUrl = imageUrls.high;
+                                recommendation = recomendacion.high;
+                            }
+
+                            // Mostrar el tooltip y posicionarlo
+                            if (tooltipModel.body) {
+                                var title = tooltipModel.title[0];
+                                var body = tooltipModel.body.map(b => b.lines).join('\n');
+                                
+                                tooltipEl.innerHTML = `
+                                    <div>
+                                        <img src="${imageUrl}" alt="Imagen" style="width: 100px; height: auto;"/>
+                                        <div>Fecha: ${title}</div>
+                                        <div>Temperatura: ${body} °C</div>
+                                        <div><p>Recomendación: ${recommendation}</p></div>
+                                    </div>
+                                `;
+                                tooltipEl.style.display = 'block';
+                                tooltipEl.style.left = `${tooltipModel.caretX}px`;
+                                tooltipEl.style.top = `${tooltipModel.caretY - tooltipEl.offsetHeight}px`;
+                            }
+                        }
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+    </script>
+
 @endsection

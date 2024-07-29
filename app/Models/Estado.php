@@ -15,6 +15,7 @@ class Estado extends Model
     protected $table = 'estado';
     protected $fillable =[
         'nombre',
+        'icono_file_path',
     ];
 
     public function Estaciones()

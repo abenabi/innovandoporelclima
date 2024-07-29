@@ -46,4 +46,8 @@ class estacion_instrumento extends Model
     {
         return $this->belongsTo(Estado::class);
     }
+    public function registros()
+    {
+        return $this->hasMany(registros::class);
+    }
 }

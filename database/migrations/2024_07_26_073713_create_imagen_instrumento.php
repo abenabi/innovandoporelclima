@@ -11,15 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('parametro', function (Blueprint $table) {
+        Schema::create('imagen_instrumento', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->foreignId('instrumento_id')->constrained('instrumento')->onDelete('cascade')->onUpdate('cascade');
-            $table->foreignId('unidad_de_medida_id')->constrained('unidad_de_medida')->onDelete('cascade')->onUpdate('cascade');
+            // $table->foreignId('estacion_id')->constrained('estacion')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
-            $table->string('nombre',50);
-            $table->string('abreviatura',10);
-            $table->string('parametroId',10);
-            $table->string('icono_file_path');
+            $table->string('file_path');
+            $table->string('descripcion',60);
         });
     }
 
@@ -28,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('parametro');
+        Schema::dropIfExists('imagen_instrumento');
     }
 };

@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notifiable;
 use App\Models\Parametro;
 use App\Models\Estacion;
-use App\Models\Estacion_Tiene_Instrumento;
+use App\Models\imagen_instrumento;
 use Illuminate\Database\Eloquent\Relations\MorphToMany;
 use App\Models\Variable;
 
@@ -20,6 +20,7 @@ class Instrumento extends Model
         'nombre',
         'altura_sobre_nivel_suelo',
         'descripcion',
+        'icono_file_path',
     ];
 
     public function Parametros()
@@ -38,5 +39,10 @@ class Instrumento extends Model
         public function Variable()
     {
         return $this->belongsTo(Variable::class, 'variable_id');
+    }
+
+    public function imagen_instrumento()
+    {
+        return $this->hasMany(imagen_instrumento::class);
     }
 }

@@ -11,11 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('estado', function (Blueprint $table) {
+        Schema::create('registros', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->foreignId('estacion_instrumento_id')->constrained('estacion_instrumento')->onDelete('cascade')->onUpdate('cascade');
+            // $table->foreignId('estacion_id')->constrained('estacion')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
-            $table->string('nombre',20);
-            $table->string('icono_file_path');
+            $table->string('fecha');
+            $table->string('valor',10);
         });
     }
 
@@ -24,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('estado');
+        Schema::dropIfExists('registros');
     }
 };

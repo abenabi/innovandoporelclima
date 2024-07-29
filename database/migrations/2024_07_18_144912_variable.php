@@ -15,6 +15,7 @@ return new class extends Migration
             $table->bigIncrements('id');
             $table->timestamps();
             $table->string('nombre',20);
+            $table->string('icono_file_path');
         });
     }
 

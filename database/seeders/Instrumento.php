@@ -19,16 +19,17 @@ class Instrumento extends Seeder
                 //id 1
                 'nombre'=>'Termógrafo',
                 'altura_sobre_nivel_suelo'=>'250 cm',
-                'descripcion'=>"Dispositivo capaz de medir temperaturas y registrarlas con el paso del tiempo con ayuda de termómetros",
+                'descripcion'=>"Instrumento para medir temperaturas y registrarlas con el paso del tiempo con ayuda de termómetros",
                 'variable_id'=>'10',
+                'icono_file_path'=>'Iconos/termografo.png',
             ],
             [
                 //id 2
                 'nombre'=>'Pluviógrafo',
                 'altura_sobre_nivel_suelo'=>'150 cm',
-                'descripcion'=>"Consta de 3 partes y tiene una capacidad de 63 milímetros",
+                'descripcion'=>"Instrumento para precipitacion. Consta de 3 partes y tiene una capacidad de 63 milímetros",
                 'variable_id'=>'5',
-
+                'icono_file_path'=>'Iconos/pluviografo.png',
             ],
         ];
         DB::table('instrumento')->insert($data);

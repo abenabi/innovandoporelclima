@@ -5,21 +5,19 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notifiable;
-use App\Models\Parametro;
-use App\Models\Instrumento;
+use App\Models\Estacion;
 
-
-class Variable extends Model
+class imagen_estacion extends Model
 {
     use HasFactory,Notifiable;
-    protected $table = 'variable';
+    protected $table = 'imagen_estacion';
     protected $fillable =[
-        'nombre',
-        'icono_file_path',
+        'file_path',
+        'descripcion',
     ];
 
-    public function Parametros()
+    public function Estacion()
     {
-        return $this->hasMany(Instrumento::class);
+        return $this->belongsTo(Estacion::class);
     }
 }

@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notifiable;
 use App\Models\Departamento;
 use App\Models\Estado;
+use App\Models\imagen_estacion;
 use App\Models\Estacion_Tiene_Instrumento;
 use App\Models\Instrumento;
 use Illuminate\Database\Eloquent\Relations\MorphToMany;
@@ -45,6 +46,11 @@ class Estacion extends Model
     // }
     public function instrumentos(){
         return $this->belongsToMany(Instrumento::class)->as('estacion_instrumento')->withPivot(['marca','fecha_de_fundacion','estado_id','id']);
+    }
+
+    public function imagen_estacion()
+    {
+        return $this->hasMany(imagen_estacion::class);
     }
 
 }

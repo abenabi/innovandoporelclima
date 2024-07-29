@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Models\Estacion;
+use App\Models\Variable;
 use Illuminate\Http\Request;
 
 use function Laravel\Prompts\form;
@@ -10,6 +11,7 @@ class MapController extends Controller
 {
     public function index()
     {
+        $variables=Variable::all();
         $datosEstaciones = Estacion::with('departamento')->get();
         // echo $datosEstaciones;
         $initialMarkers = [];
@@ -44,23 +46,9 @@ class MapController extends Controller
                     'title'=>$estacion->nombre,
                     'departamento'=>$estacion->departamento->nombre,
             ];
-            // if($estacion->departamento->zona_del_pais_id == 1){
-            //     $estacionesZonaOccidental[]=$estacion;
-            // } elseif ($estacion->departamento->zona_del_pais_id == 2) {
-            //     $estacionesZonaCentral[]=$estacion;
-            // } elseif ($estacion->departamento->zona_del_pais_id == 3) {
-            //     $estacionesZonaParacentral[]=$estacion;
-            // } else {
-            //     $estacionesZonaOriental[]=$estacion;
-            // }
         };
-        // echo json_encode($estacionesZonaOccidental);
-        // echo json_encode($estacionesZonaOccidental);
-        // echo json_encode($estacionesZonaCentral);
-        // echo json_encode($estacionesZonaParacentral);
-        // echo json_encode($estacionesZonaOriental);
-
-        return view('welcome', compact('initialMarkers','estacionesZonaOccidental','estacionesZonaCentral','estacionesZonaParacentral','estacionesZonaOriental'));
+        // echo $variables;
+        return view('welcome', compact('initialMarkers','estacionesZonaOccidental','estacionesZonaCentral','estacionesZonaParacentral','estacionesZonaOriental','variables'));
     }
 }
 

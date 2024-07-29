@@ -18,9 +18,11 @@ class EstadoSeeder extends Seeder
         $data=[
             [
                 'nombre'=>'En mantenimiento',
+                'icono_file_path'=>'Iconos/mantenimiento2.gif',
             ],
             [
                 'nombre'=>'Activa',
+                'icono_file_path'=>'Iconos/activo2.gif',
             ],
         ];
         DB::table('estado')->insert($data);

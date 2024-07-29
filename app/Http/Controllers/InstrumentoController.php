@@ -12,6 +12,9 @@ class InstrumentoController extends Controller
         $instrumento = estacion_instrumento::with('instrumento.Parametros.Unidad_De_Medida')->find($id);
         $variable=Variable::find($instrumento->instrumento->variable_id);
         // echo $variable;
-        return view('instrumento', compact('instrumento','variable'));
+        $primeraImagen = $instrumento->instrumento->imagen_instrumento[0];
+        
+        $instrumentoRegistros = estacion_instrumento::with('registros')->find($id);
+        return view('instrumento', compact('instrumento','variable','primeraImagen','instrumentoRegistros'));
     }
 }

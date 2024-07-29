@@ -17,6 +17,7 @@ class Parametro extends Model
         'nombre',
         'abreviatura',
         'parametroId',
+        'icono_file_path',
     ];
 
     // public function Variable()

@@ -32,6 +32,11 @@ class DatabaseSeeder extends Seeder
         $this->call([DepartamentoSeeder::class]);
         $this->call([EstacionSeeder::class]);
         $this->call([Estacion_Tiene_Instrumento::class]);
+        $this->call([Imagen_Estacion::class]);
+        $this->call([Imagen_Instrumento::class]);
+        $this->call([registros::class]);
+
+
 
 
     }

@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('nombre',25);
             $table->string('altura_sobre_nivel_suelo',10);
             $table->string('descripcion',200);
+            $table->string('icono_file_path');
             $table->foreignId('variable_id')->constrained('variable')->onDelete('cascade')->onUpdate('cascade');
         });
     }

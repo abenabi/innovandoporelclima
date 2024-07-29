@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 use App\Models\Estacion;
 use Illuminate\Http\Request;
+use App\Models\Variable;
+
 
 class EstacionController extends Controller
 {
@@ -19,15 +21,10 @@ class EstacionController extends Controller
     // } 
 
     public function consultar_estacion($id){
+        $variables=Variable::all();
         $estacion=Estacion::with('departamento')->find($id);
-        // $estacion_tiene_instrumentos=Estacion::find($id);
-        // echo $estacion_tiene_instrumentos;
-        // $instrumentos_de_estacion = [];
-        // foreach ($estacion_tiene_instrumentos->estacion_tiene_instrumento as $instrumentos) {
-        //     $instrumentos_de_estacion[] = $instrumentos;
-        // }
-        // echo $estacion;
+        $primeraImagen = $estacion->imagen_estacion[0];
         // echo $estacion->instrumentos;
-        return view('estacion', compact('estacion'));
+        return view('estacion', compact('estacion','primeraImagen','variables'));
     }
 }

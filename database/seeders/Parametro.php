@@ -19,7 +19,7 @@ class Parametro extends Seeder
                 'nombre'=>'Lluvia acumulada',
                 'abreviatura'=>'lluvia',
                 'parametroId'=>'pc',
-                
+                'icono_file_path'=>'Iconos/lluvia_acumulada.gif',
                 'instrumento_id'=>'2',
                 'unidad_de_medida_id'=>'5',
             ],
@@ -28,7 +28,7 @@ class Parametro extends Seeder
                 'nombre'=>'Lluvia acumulada',
                 'abreviatura'=>'lluvia',
                 'parametroId'=>'acu',
-                
+                'icono_file_path'=>'Iconos/lluvia_acumulada.gif',
                 'instrumento_id'=>'2',
                 'unidad_de_medida_id'=>'5',
             ],
@@ -37,6 +37,7 @@ class Parametro extends Seeder
                 'nombre'=>'Lluvia diaria',
                 'abreviatura'=>'pd',
                 'parametroId'=>'pd',
+                'icono_file_path'=>'Iconos/lluvia_diaria.gif',
                 
                 'instrumento_id'=>'2',
                 'unidad_de_medida_id'=>'5',
@@ -46,6 +47,7 @@ class Parametro extends Seeder
                 'nombre'=>'Precipitación',
                 'abreviatura'=>'pd',
                 'parametroId'=>'p',
+                'icono_file_path'=>'Iconos/precipitacion.gif',
                 
                 'instrumento_id'=>'2',
                 'unidad_de_medida_id'=>'5',
@@ -55,15 +57,17 @@ class Parametro extends Seeder
                 'nombre'=>'Temperatura Húmeda Promedio',
                 'abreviatura'=>'humeda',
                 'parametroId'=>'thm',
+                'icono_file_path'=>'Iconos/temperatura_humeda.gif',
                 
                 'instrumento_id'=>'1',
-                'unidad_de_medida_id'=>'10',
+                'unidad_de_medida_id'=>'10',    
             ],
             [
                 //id 6
                 'nombre'=>'Temperatura Máxima Absoluta',
                 'abreviatura'=>'maxima_abs',
                 'parametroId'=>'tmaxa',
+                'icono_file_path'=>'Iconos/temperatura_maxima.gif',
                 
                 'instrumento_id'=>'1',
                 'unidad_de_medida_id'=>'10',
@@ -73,6 +77,7 @@ class Parametro extends Seeder
                 'nombre'=>'Temperatura Máxima Promedio',
                 'abreviatura'=>'maxima',
                 'parametroId'=>'tmaxm',
+                'icono_file_path'=>'Iconos/temperatura_maxima.gif',
                 
                 'instrumento_id'=>'1',
                 'unidad_de_medida_id'=>'10',
@@ -82,6 +87,7 @@ class Parametro extends Seeder
                 'nombre'=>'Temperatura Minima Absoluta',
                 'abreviatura'=>'minima_abs',
                 'parametroId'=>'tmina',
+                'icono_file_path'=>'Iconos/temperatura_minima.gif',
                 
                 'instrumento_id'=>'1',
                 'unidad_de_medida_id'=>'10',
@@ -91,6 +97,7 @@ class Parametro extends Seeder
                 'nombre'=>'Temperatura Mínima Promedio',
                 'abreviatura'=>'minima',
                 'parametroId'=>'tminm',
+                'icono_file_path'=>'Iconos/temperatura_minima.gif',
                 
                 'instrumento_id'=>'1',
                 'unidad_de_medida_id'=>'10',
@@ -100,6 +107,7 @@ class Parametro extends Seeder
                 'nombre'=>'Temperatura Promedio',
                 'abreviatura'=>'media',
                 'parametroId'=>'tsm',
+                'icono_file_path'=>'Iconos/temperatura_media.gif',
                 
                 'instrumento_id'=>'1',
                 'unidad_de_medida_id'=>'10',
@@ -109,6 +117,7 @@ class Parametro extends Seeder
                 'nombre'=>'Temperatura Húmeda',
                 'abreviatura'=>'th',
                 'parametroId'=>'th',
+                'icono_file_path'=>'Iconos/temperatura_humeda.gif',
                 
                 'instrumento_id'=>'1',
                 'unidad_de_medida_id'=>'10',
@@ -118,6 +127,7 @@ class Parametro extends Seeder
                 'nombre'=>'Temperatura Máxima',
                 'abreviatura'=>'tmax',
                 'parametroId'=>'thm',
+                'icono_file_path'=>'Iconos/temperatura_maxima.gif',
                 
                 'instrumento_id'=>'1',
                 'unidad_de_medida_id'=>'10',
@@ -127,6 +137,7 @@ class Parametro extends Seeder
                 'nombre'=>'Temperatura Media',
                 'abreviatura'=>'ts',
                 'parametroId'=>'ts',
+                'icono_file_path'=>'Iconos/temperatura_media.gif',
                 
                 'instrumento_id'=>'1',
                 'unidad_de_medida_id'=>'10',
@@ -136,6 +147,7 @@ class Parametro extends Seeder
                 'nombre'=>'Temperatura Mínima',
                 'abreviatura'=>'tmin',
                 'parametroId'=>'tmin',
+                'icono_file_path'=>'Iconos/temperatura_minima.gif',
                 
                 'instrumento_id'=>'1',
                 'unidad_de_medida_id'=>'10',
